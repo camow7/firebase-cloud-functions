@@ -6,8 +6,8 @@ import * as cors from 'cors';
 
 
 //GITHUB Setup
-import {environment} from '../environments/environment';
-export const githubConfig = environment.githubConfig;
+//import {environment} from '../environments/environment';
+//const githubConfig = environment.githubConfig;
 //const client_id = githubConfig.client_id;
 //const client_secret = githubConfig.client_secret;
 //const apiBaseURL: string = "https://api.github.com";
