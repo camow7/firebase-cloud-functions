@@ -47,3 +47,4 @@ Thumbs.db
 functions/service-account.json
 functions/environments/environment.ts
 functions/environments/environment.prod.ts
+functions/src/gh-api-token.txt
