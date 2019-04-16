@@ -55,7 +55,7 @@ app.get('/user/:uid/:accesstoken', async (request, response) => {
     docRef.set(githubUser)
       .then(res => {response.send(res)})
       .catch(err => {response.status(404).send(err)});  
-    const githubRepos = 
+    //const githubRepos = 
   }
   catch (err){
     response.status(404).send(err)
