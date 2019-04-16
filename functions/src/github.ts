@@ -23,7 +23,7 @@ interface GithubUser {
     score?: number,
   }
 
-  interface GithubRepo {
+  /*interface GithubRepo {
     primaryLanguage?: string,
     show?: boolean,
     owner?: boolean,
@@ -52,7 +52,7 @@ interface GithubUser {
     c: number,
     d: number,
     w: number,
-  }
+  }*/
 
 //Get infor about user
 export async function getUser(accesstoken: string, uid: string): Promise<GithubUser> {
@@ -92,7 +92,7 @@ export async function getUser(accesstoken: string, uid: string): Promise<GithubU
 //Get info about the users repos
 export async function getRepos(uid: string, accesstoken: string){
     var options = {
-        uri: apiBaseURL + '/user/repos',
+        uri: apiBaseURL + '/user/repos',  //full path https://api.github.com/user/repos?access_token=284ac5a85c0bce92157ac7f728d540836ac44c85
         qs: {
             access_token: accesstoken // -> uri + '?access_token=xxxxx%20xxxxx'
         },
@@ -104,17 +104,7 @@ export async function getRepos(uid: string, accesstoken: string){
 
     return rp(options)
     .then(githubData => {
-      const githubUser: GithubUser = {
-        loginName: githubData.login,
-        email: githubData.email,
-        accessToken: accesstoken,
-        uid: uid,
-        url: githubData.html_url,
-        bio: githubData.bio,
-        photoURL: githubData.avatar_url,
-        loading:true
-      };
-      return Promise.resolve(githubUser);
+      return Promise.resolve(githubData);
       
     })
     .catch(err => {

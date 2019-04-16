@@ -51,11 +51,12 @@ app.get('/user/:uid/:accesstoken', async (request, response) => {
   const uid = request.params.uid;
   const docRef = admin.firestore().collection('github').doc(uid)
   try {
-    const githubUser = await github.getUser(request.params.accesstoken,request.params.uid)
+    const githubUser = await github.getUser(request.params.accesstoken,request.params.uid);
     docRef.set(githubUser)
       .then(res => {response.send(res)})
       .catch(err => {response.status(404).send(err)});  
-    const githubRepos = 
+    const githubRepos = await github.getRepos(request.params.uid,request.params.accesstoken);
+    console.log(JSON.stringify(githubRepos));
   }
   catch (err){
     response.status(404).send(err)
